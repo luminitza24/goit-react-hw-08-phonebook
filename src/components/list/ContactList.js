@@ -1,12 +1,12 @@
 import './list.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/operations';
-import { getContacts } from 'redux/selector';
+import { deleteContact, editContact } from 'redux/contacts/operations';
+import { selectContacts } from 'redux/contacts/selector';
 import Notiflix from 'notiflix';
 
 export const ContactList = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const handleDelete = id => dispatch(deleteContact(id));
   const filterText = useSelector(state => state.filters.filterText);
 
@@ -17,7 +17,10 @@ export const ContactList = () => {
   if (filteredContacts.length === 0) {
     return Notiflix.Notify.failure('No contact was found please try again!');
   }
+ const handleEdit=(id)=> dispatch(editContact(id));
   return (
+    <div className='contacts'>
+      <h1>Contacts</h1>
     <ul className="contact-list">
       {filteredContacts.map(contact => (
         <li key={contact.id} className="contact-item">
@@ -36,9 +39,20 @@ export const ContactList = () => {
             {' '}
             Delete{' '}
           </button>
+          <button
+            className="button"
+            type="button"
+            onClick={() => {
+              handleEdit(contact.id);
+            }}
+          >
+            {' '}
+           Edit{' '}
+          </button>
         </li>
       ))}
     </ul>
+    </div>
   );
 };
 

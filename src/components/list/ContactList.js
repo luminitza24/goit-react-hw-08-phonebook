@@ -1,4 +1,4 @@
-import './list.css';
+import './ContactList.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact, editContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selector';
@@ -17,41 +17,41 @@ export const ContactList = () => {
   if (filteredContacts.length === 0) {
     return Notiflix.Notify.failure('No contact was found please try again!');
   }
- const handleEdit=(id)=> dispatch(editContact(id));
+  const handleEdit = id => dispatch(editContact(id));
   return (
-    <div className='contacts'>
+    <div className="contacts">
       <h1>Contacts</h1>
-    <ul className="contact-list">
-      {filteredContacts.map(contact => (
-        <li key={contact.id} className="contact-item">
-          {contact.name
-            .split(' ')
-            .map(n => n.charAt(0).toUpperCase() + n.slice(1))
-            .join(' ')}{' '}
-          : {contact.number}
-          <button
-            className="button"
-            type="button"
-            onClick={() => {
-              handleDelete(contact.id);
-            }}
-          >
-            {' '}
-            Delete{' '}
-          </button>
-          <button
-            className="button"
-            type="button"
-            onClick={() => {
-              handleEdit(contact.id);
-            }}
-          >
-            {' '}
-           Edit{' '}
-          </button>
-        </li>
-      ))}
-    </ul>
+      <ul className="contact-list">
+        {filteredContacts.map(contact => (
+          <li key={contact.id} className="contact-item">
+            {contact.name
+              .split(' ')
+              .map(n => n.charAt(0).toUpperCase() + n.slice(1))
+              .join(' ')}{' '}
+            : {contact.number}
+            <button
+              className="button"
+              type="button"
+              onClick={() => {
+                handleDelete(contact.id);
+              }}
+            >
+              {' '}
+              Delete{' '}
+            </button>
+            <button
+              className="button"
+              type="button"
+              onClick={() => {
+                handleEdit(contact.id);
+              }}
+            >
+              {' '}
+              Edit{' '}
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

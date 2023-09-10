@@ -5,5 +5,37 @@
 .label {
   display: flex;
   flex-direction: column;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin-right: 20px;
+  margin-left: 20px;
+  background-color: rgb(143, 197, 201);
+  border: 1px solid brown;
+  border-radius: 5px;
+}
+
+.input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-width: 100%;
+  margin-top: 20px;
+}
+.button {
+  color: white;
+  border-radius: 10px;
+  background-color: cadetblue;
+  margin-bottom: 30px;
+  padding: 10px 15px;
+  margin-left: 30px;
+  border-color: rgba(100, 158, 160);
+  box-shadow: 0 0 5px rgba(85, 85, 85, 0.3);
+  font-size: 18px;
 }

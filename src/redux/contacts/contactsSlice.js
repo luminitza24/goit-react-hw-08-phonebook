@@ -27,7 +27,7 @@ const contactsSlice = createSlice({
     [fetchContacts.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items = action.payload;
+      state.contacts = action.payload;
     },
     [editContact.pending]: handlePending,
     [fetchContacts.rejected]: handleRejected,
@@ -35,7 +35,7 @@ const contactsSlice = createSlice({
     [addContact.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      state.items.push(action.payload);
+      state.contacts.push(action.payload);
     },
     [addContact.rejected]: handleRejected,
     [editContact.fulfilled](state, action) {
@@ -53,9 +53,7 @@ const contactsSlice = createSlice({
     [deleteContact.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      const index = state.items.findIndex(
-        task => task.id === action.payload.id
-      );
+      const index = state.items.findIndex(contact => contact.id === action.id);
       state.items.splice(index, 1);
     },
     [deleteContact.rejected]: handleRejected,

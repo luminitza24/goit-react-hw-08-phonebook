@@ -26,6 +26,7 @@ export const Form = () => {
 
   return (
     <>
+    <div className='container'>
       <form onSubmit={handleSubmit} className="form">
         <label className="label">
           {' '}
@@ -58,6 +59,7 @@ export const Form = () => {
           Add contact{' '}
         </button>
       </form>
+      </div>
     </>
   );
 };

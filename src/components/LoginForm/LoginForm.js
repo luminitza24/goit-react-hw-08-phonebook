@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
-import './LoginForm.css';
+import '../LoginForm/Login.css';
+import PropTypes from 'prop-types';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -18,18 +19,37 @@ export const LoginForm = () => {
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit} autoComplete="off">
-      <label className="label">
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label className="label">
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button className="button" type="submit">
-        Log In
-      </button>
-    </form>
+    <div className="container">
+      <form className="form" onSubmit={handleSubmit} autoComplete="off">
+        <label className="label">
+          Email
+          <input
+            className="input"
+            type="email"
+            name="email"
+            required="true"
+            autoComplete="off"
+            placeholder="Please enter e-mail!"
+          />
+        </label>
+        <label className="label">
+          Password
+          <input
+            className="input"
+            type="password"
+            name="password"
+            required="true"
+            placeholder="Please enter password!"
+          />
+        </label>
+        <button className="button" type="submit">
+          Log In
+        </button>
+      </form>
+    </div>
   );
+};
+LoginForm.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  removeContact: PropTypes.func.isRequired,
 };

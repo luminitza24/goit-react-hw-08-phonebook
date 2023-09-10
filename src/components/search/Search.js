@@ -2,6 +2,7 @@ import './Search.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilters } from 'redux/contacts/selector';
 import { changeTextFilter } from 'redux/contacts/filterSlice';
+import PropTypes from 'prop-types';
 
 export const Search = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ export const Search = () => {
   return (
     <>
       <h3 className="info">Find contacts by name</h3>
-      <label className="filter">
+      <label className="label">
         <input
           autoComplete="off"
           type="text"
@@ -25,4 +26,8 @@ export const Search = () => {
       </label>
     </>
   );
+};
+Search.propTypes = {
+  onChange: PropTypes.func,
+  filters: PropTypes.string,
 };
